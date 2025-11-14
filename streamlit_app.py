@@ -22,7 +22,7 @@ pd_df = my_dataframe.to_pandas()
 # Lista składników do wyboru
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:',
-    pd_df['FRUIT_NAME'].tolist(),  # ✅ poprawione
+    pd_df['SEARCH_ON'].tolist(),  # ✅ poprawione
     max_selections=5
 )
 
@@ -31,8 +31,9 @@ if ingredients_list:
     ingredients_string = ' '.join(ingredients_list)  # ✅ prostsze łączenie
 
     for fruit_chosen in ingredients_list:
-        # Pobranie wartości SEARCH_ON
-        search_on = pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        # Pobranie wartości SEARCH_ONFfruit
+        
+        search_on = pd_df.loc[pd_df['SEARCH_ON'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
         st.write(f"The search value for {fruit_chosen} is {search_on}.")
 
         # Pobranie informacji o wartości odżywczej z API
